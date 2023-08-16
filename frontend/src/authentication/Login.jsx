@@ -11,9 +11,9 @@ const Login = () => {
                         <div className="font-medium">PASSWORD</div>
                         <input type="password" className="rounded-lg h-10 w-[17rem] p-3 mb-4 bg-lightgray text-darkgray" placeholder="Password" />
                     </div>
-                    <div className="flex gap-3">
-                        <button className="w-24 p-2 font-semibold underline rounded-md bg-lightgray text-darkgray text-decoration-line:">Login</button>
-                        <button className="w-24 font-semibold underline rounded-md bg-lightgray text-darkgray text-decoration-line:">Cancel</button>
+                    <div className="flex gap-3 font-semibold underline text-darkgray text-decoration-line:">
+                        <button className="w-24 p-2 rounded-md bg-lightgray">Login</button>
+                        <button className="w-24 p-2 rounded-md bg-lightgray">Cancel</button>
                     </div>
                 </form>
             </div>
