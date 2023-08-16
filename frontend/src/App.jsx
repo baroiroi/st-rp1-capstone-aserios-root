@@ -1,11 +1,11 @@
 import React from 'react'
-import UserBooking from "./components/UserBooking"
+import Login from './authentication/Login'
 
 const App = () => {
     return (
         <>
-            <div>
-                <UserBooking />
+            <div className=''>
+                <Login />
             </div>
 
 

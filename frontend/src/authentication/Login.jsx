@@ -1,0 +1,24 @@
+const Login = () => {
+    return (
+
+        <>
+            <div className="flex items-center justify-center h-screen bg-aqua">
+                <form className="flex flex-col gap-4 items-center h-[20rem] w-[20rem] bg-darkgray rounded-xl pt-4 px-6 font-sans text-lightgray">
+                    <span className="font-bold text-[2rem]">LOGIN</span>
+                    <div className="flex-col justify-center">
+                        <div className="font-medium">USERNAME</div>
+                        <input type="text" className="rounded-lg h-10 w-[17rem] p-3 mb-4 bg-lightgray text-darkgray" placeholder="Username" />
+                        <div className="font-medium">PASSWORD</div>
+                        <input type="password" className="rounded-lg h-10 w-[17rem] p-3 mb-4 bg-lightgray text-darkgray" placeholder="Password" />
+                    </div>
+                    <div className="flex gap-3">
+                        <button className="w-24 p-2 font-semibold underline rounded-md bg-lightgray text-darkgray text-decoration-line:">Login</button>
+                        <button className="w-24 font-semibold underline rounded-md bg-lightgray text-darkgray text-decoration-line:">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </>
+    )
+}
+
+export default Login
