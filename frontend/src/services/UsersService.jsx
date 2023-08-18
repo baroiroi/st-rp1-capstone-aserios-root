@@ -9,7 +9,7 @@ const App = () => {
                 </div>
                 <div className="w-[16rem] h-[4.5rem] ">
                     <div className="font-bold text-2xl h-[2rem] tracking-[0.1rem] text-white">
-                        Returnia
+                        Dental Smile
                     </div>
                     <div className="flex justify-between justify-items-center">
                         <div className="font-bold text-2xl h-[3rem] tracking-[0.1rem] flex items-center">

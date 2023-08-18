@@ -4,7 +4,7 @@ const UserBooking = () => {
     return (
         <>
             <div className='flex items-center justify-center h-screen bg-aqua'>
-                <form id="inputForm" className="flex flex-col gap-4 items-center h-[20rem] w-[20rem] bg-darkgray rounded-xl pt-4 px-1 font-sans text-lightgray">
+                <form id="inputForm" className="flex flex-col gap-4 items-center h-[21rem] w-[20rem] bg-darkgray rounded-xl pt-4 px-1 font-sans text-lightgray">
                     <h1 className='text-[1.5rem]'>Book a Schedule</h1>
                     <div className='flex w-full gap-3'>
                         <label htmlFor="BookDate" className='pl-2 text-lightgray'>Book Date</label>

@@ -3,7 +3,7 @@ const Login = () => {
 
         <>
             <div className="flex items-center justify-center h-screen bg-aqua">
-                <form className="flex flex-col gap-4 items-center h-[20rem] w-[20rem] bg-darkgray rounded-xl pt-4 px-6 font-sans text-lightgray">
+                <form className="flex flex-col gap-4 items-center h-[24rem] w-[20rem] bg-darkgray rounded-xl pt-4 px-6 font-sans text-lightgray">
                     <span className="font-bold text-[2rem]">LOGIN</span>
                     <div className="flex-col justify-center">
                         <div className="font-medium">USERNAME</div>
@@ -14,6 +14,10 @@ const Login = () => {
                     <div className="flex gap-3 font-semibold underline text-darkgray text-decoration-line:">
                         <button className="w-24 p-2 rounded-md bg-lightgray">Login</button>
                         <button className="w-24 p-2 rounded-md bg-lightgray">Cancel</button>
+                    </div>
+                    <div className="mt-5">
+                        <span>Not yet registered? </span>
+                        <a href="#" className="underline text-aqua text-decoration-line:">Create an Account</a>
                     </div>
                 </form>
             </div>
