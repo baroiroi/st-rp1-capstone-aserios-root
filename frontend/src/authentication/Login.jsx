@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 const Login = () => {
     return (
 
@@ -17,7 +18,7 @@ const Login = () => {
                     </div>
                     <div className="mt-5">
                         <span>Not yet registered? </span>
-                        <a href="#" className="underline text-aqua text-decoration-line:">Create an Account</a>
+                        <Link to="/Modal">Create an Account</Link>
                     </div>
                 </form>
             </div>

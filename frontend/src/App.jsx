@@ -2,20 +2,16 @@ import React from 'react'
 import Login from './authentication/Login'
 import UserBooking from './components/UserBooking'
 import { Modal } from './components/Modal'
-import UsersService from './services/UsersService'
+import { Routes, Route } from 'react-router-dom'
 
 const App = () => {
     return (
-        <>
-            <div className=''>
-                <Login />
-                <UserBooking />
-                <Modal />
-            </div>
-
-
-
-        </>
+        <div>
+            <Routes>
+                <Route path='/' element={<Login />} />
+                <Route path='/Modal' element={<Modal />} />
+            </Routes>
+        </div>
 
     )
 }
