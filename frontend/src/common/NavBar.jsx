@@ -1,8 +1,11 @@
 import React from 'react'
+<assets></assets>
 
 const NavBar = () => {
     return (
-        <div className='bg-transparent'>NavBar</div>
+        <div className=''>
+            <img src={require("../assets/DentalSmileLogo.jpg")} alt="Logo" />
+        </div>
     )
 }
 

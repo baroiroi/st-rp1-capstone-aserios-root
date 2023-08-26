@@ -1,4 +1,4 @@
-import { getAllUsers } from '../services/Users'
+import { Users } from '../services/Users'
 import { useEffect, useState } from 'react'
 import { Loader } from './Loader'
 import { EditUser } from './EditUser'

@@ -4,6 +4,7 @@ import UserBooking from './components/UserBooking'
 import { Modal } from './components/Modal'
 import { Routes, Route } from 'react-router-dom'
 import NavBar from './common/NavBar'
+import { Loader } from './components/Loader'
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
                 <Route path='/' element={<Login />} />
                 <Route path='/Modal' element={<Modal />} />
             </Routes>
+            <Loader />
         </div>
 
     )

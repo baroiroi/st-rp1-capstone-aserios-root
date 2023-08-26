@@ -18,7 +18,7 @@ const Login = () => {
                     </div>
                     <div className="mt-5">
                         <span>Not yet registered? </span>
-                        <Link to="/Modal">Create an Account</Link>
+                        <Link to="/Modal" className="underline text-decoration-line:">Create an Account</Link>
                     </div>
                 </form>
             </div>
