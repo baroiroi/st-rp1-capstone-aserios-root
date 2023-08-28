@@ -3,7 +3,9 @@ const cors = require('cors')
 const express = require('express')
 const app = express()
 const port = process.env.SERVERPORT || 3000
-app.use(cors()) // middleware
+
+// middleware
+app.use(cors())
 app.use(express.json())
 
 const pool = require('./config/db')
