@@ -4,7 +4,6 @@ import React from 'react'
 const NavBar = () => {
     return (
         <div className=''>
-            <img src={require("../assets/DentalSmileLogo.jpg")} alt="Logo" />
         </div>
     )
 }
