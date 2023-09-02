@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 const defaultValues = {
 
     email: '',
-    Fname: '',
-    Lname: '',
+    first_name: '',
+    last_name: '',
     address: '',
-    contact: '',
+    contact_num: '',
     birthday: '',
     gender: '',
     password: '',
@@ -18,10 +19,10 @@ export const Form = ({ handleClickbutton }) => {
     const [isSubmit, setIsSubmit] = useState(false)
 
     const email_value = useRef(null);
-    const Fname_value = useRef(null);
-    const Lname_value = useRef(null);
+    const first_name_value = useRef(null);
+    const last_name_value = useRef(null);
     const address_value = useRef(null);
-    const contact_value = useRef(null);
+    const contact_num_value = useRef(null);
     const birthday_value = useRef(null);
     const gender_value = useRef(null);
     const password_value = useRef(null);
@@ -33,10 +34,10 @@ export const Form = ({ handleClickbutton }) => {
             setUserInputs(defaultValues)
 
             email_value.current.value = '';
-            Fname_value.current.value = '';
-            Lname_value.current.value = '';
+            first_name_value.current.value = '';
+            last_name_value.current.value = '';
             address_value.current.value = '';
-            contact_value.current.value = '';
+            contact_num_value.current.value = '';
             birthday_value.current.value = '';
             gender_value.current.value = '';
             password_value.current.value = '';
@@ -62,31 +63,31 @@ export const Form = ({ handleClickbutton }) => {
                 errors.email = "Invalid email address"
             }
         }
-        if (userInputs.Fname === "") {
-            errors.Fname = "First Name is required"
+        if (userInputs.first_name === "") {
+            errors.first_name = "First Name is required"
         } else {
-            const FnameRegex = /^[a-zA-Z].\D*$/
-            if (!FnameRegex.test(userInputs.Fname)) {
-                errors.Fname = "Invalid First Name"
+            const first_nameRegex = /^[a-zA-Z].\D*$/
+            if (!first_nameRegex.test(userInputs.first_name)) {
+                errors.first_name = "Invalid First Name"
             }
         }
-        if (userInputs.Lname === "") {
-            errors.Lname = "Last Name is required"
+        if (userInputs.last_name === "") {
+            errors.last_name = "Last Name is required"
         } else {
-            const LnameRegex = /^[a-zA-Z].\D*$/
-            if (!LnameRegex.test(userInputs.Lname)) {
-                errors.Lname = "Invalid Last Name"
+            const last_nameRegex = /^[a-zA-Z].\D*$/
+            if (!last_nameRegex.test(userInputs.last_name)) {
+                errors.last_name = "Invalid Last Name"
             }
         }
         if (userInputs.address === "") {
             errors.address = "Address is required"
         }
-        if (userInputs.contact === "") {
-            errors.contact = "Contact Number is required"
+        if (userInputs.contact_num === "") {
+            errors.contact_num = "Contact Number is required"
         } else {
-            const ContactRegex = /^[09]{2}[0-9]{9}$/
-            if (!ContactRegex.test(userInputs.contact)) {
-                errors.contact = "Invalid Contact Number Format"
+            const contact_numRegex = /^[09]{2}[0-9]{9}$/
+            if (!contact_numRegex.test(userInputs.contact_num)) {
+                errors.contact_num = "Invalid Contact Number Format"
             }
         }
         if (userInputs.birthday === "") {
@@ -105,11 +106,19 @@ export const Form = ({ handleClickbutton }) => {
         }
         return errors
     }
-    const handleFormSubmit = (e) => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault()
         setFormErrors(validate(userInputs))
         setIsSubmit(true)
-        console.log(formErrors)
+
+        try {
+            const response = await axios.post('/users', userInputs)
+            console.log('User created:', response.data)
+        }
+        catch (error) {
+            console.error('Error creating user:', error)
+        }
+
     }
 
     return (
@@ -142,30 +151,30 @@ export const Form = ({ handleClickbutton }) => {
                                     Your First Name
                                 </label>
                                 <input
-                                    ref={Fname_value}
+                                    ref={first_name_value}
                                     onChange={handleOnChange}
                                     type="text"
-                                    name="Fname"
-                                    id="Fname"
+                                    name="first_name"
+                                    id="first_name"
                                     placeholder="First Name"
                                     className="text-sm rounded-lg block w-full p-2.5 bg-lightgray border border-darkgray placeholder-darkgray text-darkgray"
                                 />
-                                <span className='absolute text-aqua text-[0.75rem]'>{formErrors.Fname}</span>
+                                <span className='absolute text-aqua text-[0.75rem]'>{formErrors.first_name}</span>
                             </div>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
                                     Your Last Name
                                 </label>
                                 <input
-                                    ref={Lname_value}
+                                    ref={last_name_value}
                                     onChange={handleOnChange}
                                     type="text"
-                                    name="Lname"
-                                    id="Lname"
+                                    name="last_name"
+                                    id="last_name"
                                     placeholder="Last Name"
                                     className="text-sm rounded-lg block w-full p-2.5 bg-lightgray border border-darkgray placeholder-darkgray text-darkgray"
                                 />
-                                <span className='absolute text-aqua text-[0.75rem]'>{formErrors.Lname}</span>
+                                <span className='absolute text-aqua text-[0.75rem]'>{formErrors.last_name}</span>
                             </div>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
@@ -184,18 +193,18 @@ export const Form = ({ handleClickbutton }) => {
                             </div>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
-                                    Your contact number
+                                    Your contact_num number
                                 </label>
                                 <input
-                                    ref={contact_value}
+                                    ref={contact_num_value}
                                     onChange={handleOnChange}
                                     type="number"
-                                    name="contact"
-                                    id="contact"
+                                    name="contact_num"
+                                    id="contact_num"
                                     placeholder="09*********"
                                     className="text-sm rounded-lg block w-full p-2.5 bg-lightgray border border-darkgray placeholder-darkgray text-darkgray"
                                 />
-                                <span className='absolute text-aqua text-[0.75rem]'>{formErrors.contact}</span>
+                                <span className='absolute text-aqua text-[0.75rem]'>{formErrors.contact_num}</span>
                             </div>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
@@ -222,7 +231,6 @@ export const Form = ({ handleClickbutton }) => {
                                     name="gender"
                                     id="gender"
                                     className="text-sm rounded-lg block w-full p-2.5 bg-lightgray border border-darkgray text-darkgray">
-                                    <option value="" disabled></option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
