@@ -25,11 +25,12 @@ app.get('/users', async (req, res) => {
     }
 })
 //create
-app.post('/user', async (req, res) => {
+app.post('/users', async (req, res) => {
     const {
         email,
         password,
-        name,
+        first_name,
+        last_name,
         address,
         role,
         contact_num,
@@ -38,11 +39,12 @@ app.post('/user', async (req, res) => {
     } = req.body
     try {
         const userCreated = await pool.query(
-            'INSERT INTO users (email, password, name, address, role, contact_num, gender, birthdate) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+            'INSERT INTO users (email, password, first_name, last_name, address, role, contact_num, gender, birthdate) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
             [
                 email,
                 password,
-                name,
+                first_name,
+                last_name,
                 address,
                 role,
                 contact_num,
@@ -71,7 +73,7 @@ app.put('/users/:id', async (req, res) => {
     } = req.body
     try {
         const userUpdated = await pool.query(
-            'UPDATE users SET email = $1, password = $2,name = $3, address = $4, role = $5, contact_num = $6, gender = $7, birthdate =$8 WHERE user_id = $9 RETURNING *',
+            'UPDATE users SET email = $1, password = $2, name = $3, address = $4, role = $5, contact_num = $6, gender = $7, birthdate =$8 WHERE user_id = $9 RETURNING *',
             [
                 email,
                 password,
