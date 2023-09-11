@@ -9,7 +9,7 @@ const defaultValues = {
     last_name: '',
     address: '',
     contact_num: '',
-    birthday: '',
+    birthdate: '',
     gender: '',
     password: '',
 }
@@ -23,7 +23,7 @@ export const Form = ({ handleClickbutton }) => {
     const last_name_value = useRef(null);
     const address_value = useRef(null);
     const contact_num_value = useRef(null);
-    const birthday_value = useRef(null);
+    const birthdate_value = useRef(null);
     const gender_value = useRef(null);
     const password_value = useRef(null);
 
@@ -38,7 +38,7 @@ export const Form = ({ handleClickbutton }) => {
             last_name_value.current.value = '';
             address_value.current.value = '';
             contact_num_value.current.value = '';
-            birthday_value.current.value = '';
+            birthdate_value.current.value = '';
             gender_value.current.value = '';
             password_value.current.value = '';
         }
@@ -90,8 +90,8 @@ export const Form = ({ handleClickbutton }) => {
                 errors.contact_num = "Invalid Contact Number Format"
             }
         }
-        if (userInputs.birthday === "") {
-            errors.birthday = "Birthday is required"
+        if (userInputs.birthdate === "") {
+            errors.birthdate = "birthday is required"
         }
         if (userInputs.gender === "") {
             errors.gender = "Gender is required"
@@ -112,7 +112,7 @@ export const Form = ({ handleClickbutton }) => {
         setIsSubmit(true)
 
         try {
-            const response = await axios.post('/users', userInputs)
+            const response = await axios.post('http://localhost:8000/users', userInputs)
             console.log('User created:', response.data)
         }
         catch (error) {
@@ -208,17 +208,17 @@ export const Form = ({ handleClickbutton }) => {
                             </div>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
-                                    Your birthday
+                                    Your birthdate
                                 </label>
                                 <input
-                                    ref={birthday_value}
+                                    ref={birthdate_value}
                                     onChange={handleOnChange}
                                     type="date"
-                                    name="birthday"
-                                    id="birthday"
+                                    name="birthdate"
+                                    id="birthdate"
                                     className="text-sm rounded-lg block w-full p-2.5 bg-lightgray border border-darkgray placeholder-darkgray text-darkgray"
                                 />
-                                <span className='absolute text-aqua text-[0.75rem]'>{formErrors.birthday}</span>
+                                <span className='absolute text-aqua text-[0.75rem]'>{formErrors.birthdate}</span>
                             </div>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
@@ -231,6 +231,7 @@ export const Form = ({ handleClickbutton }) => {
                                     name="gender"
                                     id="gender"
                                     className="text-sm rounded-lg block w-full p-2.5 bg-lightgray border border-darkgray text-darkgray">
+                                    <option value="" disabled></option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
