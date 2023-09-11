@@ -29,6 +29,18 @@ export const Form = ({ handleClickbutton }) => {
 
     useEffect(() => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
+
+            const createUser = async () => {
+                try {
+                    const response = await axios.post('http://localhost:8000/users', userInputs)
+                    console.log('User created:', response.data)
+                    // toast.success("Account Successfully Created!")
+                }
+                catch (error) {
+                    console.error('Error creating user:', error)
+                }
+            }
+            createUser()
             setIsSubmit(false)
             setFormErrors({})
             setUserInputs(defaultValues)
@@ -50,6 +62,7 @@ export const Form = ({ handleClickbutton }) => {
         setUserInputs((prev) => {
             return { ...prev, [name]: value }
         })
+        console.log(userInputs)
     }
 
     const validate = (userInputs) => {
@@ -110,16 +123,8 @@ export const Form = ({ handleClickbutton }) => {
         e.preventDefault()
         setFormErrors(validate(userInputs))
         setIsSubmit(true)
-
-        try {
-            const response = await axios.post('http://localhost:8000/users', userInputs)
-            console.log('User created:', response.data)
-        }
-        catch (error) {
-            console.error('Error creating user:', error)
-        }
-
     }
+
 
     return (
         <>
@@ -231,7 +236,7 @@ export const Form = ({ handleClickbutton }) => {
                                     name="gender"
                                     id="gender"
                                     className="text-sm rounded-lg block w-full p-2.5 bg-lightgray border border-darkgray text-darkgray">
-                                    <option value="" disabled></option>
+                                    <option value="" disabled hidden selected>Choose here</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
