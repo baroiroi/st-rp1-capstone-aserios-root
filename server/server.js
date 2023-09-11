@@ -3,6 +3,7 @@ const cors = require('cors')
 const express = require('express')
 const app = express()
 const port = process.env.SERVERPORT || 3000
+const bcrypt = require('bcryptjs')
 
 // middleware
 app.use(cors())
@@ -38,18 +39,20 @@ app.post('/users', async (req, res) => {
         birthdate,
     } = req.body
     try {
+        const salt = bcrypt.genSaltSync(10)
+        const hashedPassword = bcrypt.hashSync(password, salt)
         const userCreated = await pool.query(
             'INSERT INTO users (email, password, first_name, last_name, address, role, contact_num, gender, birthdate) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
             [
                 email,
-                password,
+                hashedPassword,
                 first_name,
                 last_name,
                 address,
                 role,
                 contact_num,
                 gender,
-                birthdate,
+                birthdate
             ]
         )
         res.json(userCreated.rows[0])
@@ -105,6 +108,37 @@ app.delete('/user/:id', async (req, res) => {
     }
 })
 
+
+app.post('/login', async (req, res) => {
+    const {
+        email,
+        password,
+    } = req.body
+    try {
+        const user = await pool.query(
+            'SELECT * from users where email = $1',
+            [email]
+        )
+        console.log(user.rows.length)
+        if (user.rows.length > 0) {
+            const match = await bcrypt.compare(password, user.rows[0].password)
+            if (match) {
+                res.json(user.rows)
+            }
+            else {
+                res.status(500).json({ message: 'Internal Server Error' });
+            }
+        }
+        else {
+            res.status(500).json({ message: 'User not Found' });
+        }
+    } catch (error) {
+        console.error(error)
+    }
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
+
+
