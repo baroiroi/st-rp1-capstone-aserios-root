@@ -33,7 +33,7 @@ const Login = () => {
     return (
         <>
             <div className="flex items-center justify-center h-screen bg-aqua">
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center h-[24rem] w-[20rem] bg-darkgray rounded-xl pt-4 px-6 font-sans text-lightgray">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center h-[24rem] w-[20rem] bg-darkgray rounded-xl pt-4 px-6 mr-2 font-sans text-lightgray">
                     <span className="font-bold text-[2rem]">LOGIN</span>
                     <div className="flex-col justify-center">
                         <div className="font-medium">EMAIL</div>
