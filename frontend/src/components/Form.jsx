@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const defaultValues = {
 
@@ -34,9 +36,10 @@ export const Form = ({ handleClickbutton }) => {
                 try {
                     const response = await axios.post('http://localhost:8000/users', userInputs)
                     console.log('User created:', response.data)
-                    // toast.success("Account Successfully Created!")
+                    toast.success("Account Successfully Created!")
                 }
                 catch (error) {
+                    toast.error("Error creating account")
                     console.error('Error creating user:', error)
                 }
             }
@@ -127,6 +130,7 @@ export const Form = ({ handleClickbutton }) => {
 
     return (
         <>
+            <ToastContainer />
             <div className="flex items-center justify-center bg-aqua text-lightgray">
                 <div className="relative mr-2 rounded-lg bg-darkgray">
                     <div className="px-8 py-6 w-80">
@@ -248,7 +252,6 @@ export const Form = ({ handleClickbutton }) => {
                                 <input
                                     ref={password_value}
                                     onChange={handleOnChange}
-                                    onClick={handleClickbutton}
                                     type="password"
                                     name="password"
                                     id="password"
@@ -260,6 +263,7 @@ export const Form = ({ handleClickbutton }) => {
                             <div className='flex justify-between text-darkgray'>
                                 <button
                                     type='submit'
+                                    onClick={handleClickbutton}
                                     className='p-2 font-semibold underline rounded-lg bg-lightgray text-decoration-line:'>Create Account</button>
                                 <Link to="/">
                                     <button className='p-2 font-semibold underline rounded-lg bg-lightgray text-decoration-line:'>Cancel</button>

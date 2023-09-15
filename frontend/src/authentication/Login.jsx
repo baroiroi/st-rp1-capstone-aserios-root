@@ -1,9 +1,14 @@
-import { Link } from "react-router-dom"
-import { useState } from 'react'
+import { Link, useNavigate } from "react-router-dom"
+import { useState, useEffect } from 'react'
 import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const Login = () => {
 
     const [loginInputs, setLoginInputs] = useState({})
+    const navigate = useNavigate()
 
     const handleonChange = (e) => {
         const { name, value } = e.target;
@@ -18,13 +23,13 @@ const Login = () => {
             const response = await axios.post('http://localhost:8000/login', loginInputs)
             if (response.data.length > 0) {
                 console.log(response.data)
-            }
-            else {
-                alert('User not found')
+                localStorage.setItem('login', JSON.stringify(response.data))
+                toast.success('Login Successfully')
+                setTimeout(navigate('/UserBooking'), 2000)
             }
         }
         catch (error) {
-            console.error(error)
+            toast.error('Invalid Credentials')
         }
 
     }
@@ -32,6 +37,7 @@ const Login = () => {
 
     return (
         <>
+            <ToastContainer />
             <div className="flex items-center justify-center h-screen bg-aqua">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4 items-center h-[24rem] w-[20rem] bg-darkgray rounded-xl pt-4 px-6 mr-2 font-sans text-lightgray">
                     <span className="font-bold text-[2rem]">LOGIN</span>

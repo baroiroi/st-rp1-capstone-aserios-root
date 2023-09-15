@@ -13,6 +13,7 @@ const App = () => {
             <Routes>
                 <Route path='/' element={<Login />} />
                 <Route path='/Form' element={<Form />} />
+                <Route path='/UserBooking' element={<UserBooking />} />
             </Routes>
             <Loader />
         </div>
