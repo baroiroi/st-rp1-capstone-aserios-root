@@ -108,7 +108,7 @@ app.delete('/user/:id', async (req, res) => {
     }
 })
 
-
+//Login Validations
 app.post('/login', async (req, res) => {
     const {
         email,
