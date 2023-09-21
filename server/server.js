@@ -136,6 +136,48 @@ app.post('/login', async (req, res) => {
         console.error(error)
     }
 })
+//Create Booking
+app.post('/booking', async (req, res) => {
+    const {
+        user_id,
+        date,
+        time,
+        availed_services
+    } = req.body
+    try {
+        const bookingCreated = await pool.query(
+            'INSERT INTO booking (user_id, date, time) VALUES ($1, $2, $3) RETURNING *',
+            [
+                user_id,
+                date,
+                time
+            ]
+        )
+        if (bookingCreated.rows.length === 0) {
+            await pool.query('ROLLBACK')
+            res.send('Booking Unsuccessful')
+        }
+        if (bookingCreated.rows.length !== 0) {
+            const booking_id = bookingCreated.rows[0].booking_id
+            for (let i = 0; i < availed_services.length; i++) {
+                const availedServiceCreated = await pool.query(
+                    'INSERT INTO availed_services (service_id, booking_id, patient_name) VALUES ($1, $2, $3) RETURNING *',
+                    [
+                        availed_services[i].service_id,
+                        booking_id,
+                        availed_services[i].patient_name
+                    ]
+                )
+
+            }
+        }
+        res.json(bookingCreated.rows[0])
+    } catch (error) {
+        await pool.query('ROLLBACK')
+        res.send('Booking Unsuccessful')
+        console.error(error)
+    }
+})
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
