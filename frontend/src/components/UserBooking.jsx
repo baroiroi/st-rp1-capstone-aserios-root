@@ -63,8 +63,10 @@ const UserBooking = () => {
                         </div>
                         <div className='flex w-full gap-3'>
                             <label htmlFor="Services" className='pl-2 text-darkgray'>Services</label>
-                            <select name="status" className="p-1 text-black bg-white rounded">
-                                <option value="">Select a status</option>pasta</select>
+                            <select name="status" className="p-1 bg-white rounded text-darkgray">
+                                <option value="">Select a service</option>
+                                <option value="Pasta">Pasta</option>
+                            </select>
                         </div>
                     </div>
 
