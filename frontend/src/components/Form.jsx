@@ -166,6 +166,7 @@ export const Form = ({ handleClickbutton }) => {
                                     id="first_name"
                                     placeholder="First Name"
                                     className="text-sm rounded-lg block w-full p-2.5 bg-lightgray border border-darkgray placeholder-darkgray text-darkgray"
+                                    autoComplete='on'
                                 />
                                 <span className='absolute text-aqua text-[0.75rem]'>{formErrors.first_name}</span>
                             </div>
@@ -181,6 +182,7 @@ export const Form = ({ handleClickbutton }) => {
                                     id="last_name"
                                     placeholder="Last Name"
                                     className="text-sm rounded-lg block w-full p-2.5 bg-lightgray border border-darkgray placeholder-darkgray text-darkgray"
+                                    autoComplete='on'
                                 />
                                 <span className='absolute text-aqua text-[0.75rem]'>{formErrors.last_name}</span>
                             </div>

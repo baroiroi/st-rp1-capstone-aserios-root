@@ -4,7 +4,7 @@ const UserBooking = () => {
     return (
         <>
             <div className='flex items-center justify-center h-screen bg-aqua'>
-                <form id="inputForm" className="flex flex-col gap-4 items-center h-[21rem] w-[20rem] bg-darkgray rounded-xl pt-4 px-1 font-sans text-lightgray">
+                <form id="inputForm" className="flex flex-col gap-4 items-center h-[30rem] w-[20rem] bg-darkgray rounded-xl pt-4 px-1 font-sans text-lightgray">
                     <h1 className='text-[1.5rem]'>Book a Schedule</h1>
                     <div className='flex w-full gap-3'>
                         <label htmlFor="BookDate" className='pl-2 text-lightgray'>Book Date</label>
@@ -54,6 +54,20 @@ const UserBooking = () => {
                             className='ml-[72px] text-darkgray'
                         />
                     </div>
+
+                    <div id="availedService" className="flex flex-col gap-4 items-center h-[21rem] w-[18rem] bg-lightgray rounded-xl pt-4 px-1 font-sans text-darkgray m-4">
+                        <div className='flex w-full gap-3'>
+                            <label htmlFor="PatientName" className='pl-2 text-darkgray'>Patient Name</label>
+                            <input type="text" id="PatientName" name="PatientName"
+                                className='ml-[12px] text-darkgray' />
+                        </div>
+                        <div className='flex w-full gap-3'>
+                            <label htmlFor="Services" className='pl-2 text-darkgray'>Services</label>
+                            <select name="status" className="p-1 text-black bg-white rounded">
+                                <option value="">Select a status</option>pasta</select>
+                        </div>
+                    </div>
+
                     <div className='flex justify-center w-full gap-3 pb-4 mt-1 font-semibold underline text-darkgray text-decoration-line:'>
                         <button className='p-2 rounded-md bg-lightgray'>Book Now</button>
                         <button className='p-2 rounded-md bg-lightgray'>Cancel</button>
