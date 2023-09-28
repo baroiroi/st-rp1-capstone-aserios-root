@@ -16,7 +16,7 @@ const NavBar = () => {
                 <span></span>
                 <LiaToothSolid size={30} onClick={handleClick} />
             </div>
-            {showMenu && <div className="fixed w-full h-full px-3 text-right text-lightgray opacity-0.5 absolute">
+            {showMenu && <div className="w-full h-full px-3 text-right text-lightgray opacity-0.5 absolute">
                 <ul className="">
                     {navbar.map((nav, index) => {
                         return (
