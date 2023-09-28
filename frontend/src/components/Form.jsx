@@ -132,7 +132,7 @@ export const Form = ({ handleClickbutton }) => {
         <>
             <ToastContainer />
             <div className="flex items-center justify-center bg-aqua text-lightgray">
-                <div className="relative mr-2 rounded-lg bg-darkgray">
+                <div className="mr-2 rounded-lg bg-darkgray">
                     <div className="px-8 py-6 w-80">
                         <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
                             Create a new account

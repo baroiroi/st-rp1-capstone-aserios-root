@@ -15,7 +15,7 @@ const App = () => {
                 <Route path='/Form' element={<Form />} />
                 <Route path='/UserBooking' element={<UserBooking />} />
             </Routes>
-            <Loader />
+            {/* <Loader /> */}
         </div>
 
     )
