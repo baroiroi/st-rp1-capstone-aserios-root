@@ -179,6 +179,17 @@ app.post('/booking', async (req, res) => {
     }
 })
 
+app.get('/users', async (req, res) => {
+    try {
+        const users = await pool.query(
+            'SELECT * FROM users ORDER BY user_id ASC'
+        )
+        res.json(users.rows)
+    } catch (error) {
+        console.error(error)
+    }
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
