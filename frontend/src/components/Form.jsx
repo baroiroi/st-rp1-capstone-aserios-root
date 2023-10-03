@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -57,7 +57,7 @@ export const Form = ({ handleClickbutton }) => {
             gender_value.current.value = '';
             password_value.current.value = '';
         }
-    }, [formErrors])
+    }, [formErrors, isSubmit, userInputs])
 
 
     const handleOnChange = (e) => {
@@ -73,7 +73,7 @@ export const Form = ({ handleClickbutton }) => {
         if (userInputs.email === "") {
             errors.email = "Email is required"
         } else {
-            const EmailRegex = /^[a-zA-Z0-9._\-]+@[a-zA-Z]+.[a-zA-Z]+.[a-zA-Z]{2,4}$/
+            const EmailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z]+.[a-zA-Z]+.[a-zA-Z]{2,4}$/
             if (!EmailRegex.test(userInputs.email)) {
                 errors.email = "Invalid email address"
             }

@@ -59,15 +59,17 @@ const UserBooking = () => {
                         <div className='flex w-full gap-3'>
                             <label htmlFor="PatientName" className='pl-2 text-darkgray'>Patient Name</label>
                             <input type="text" id="PatientName" name="PatientName"
-                                className='ml-[12px] text-darkgray' />
+                                className='ml-[12px] text-darkgray'/>
                         </div>
+
                         <div className='flex w-full gap-3'>
-                            <label htmlFor="Services" className='pl-2 text-darkgray'>Services</label>
-                            <select name="status" className="p-1 bg-white rounded text-darkgray">
+                            <label htmlFor="services" className='pl-2 text-darkgray'>Services</label>
+                            <select name="services" id="services" className="p-1 bg-white rounded text-darkgray">
                                 <option value="">Select a service</option>
                                 <option value="Pasta">Pasta</option>
                             </select>
                         </div>
+                        
                     </div>
 
                     <div className='flex justify-center w-full gap-3 pb-4 mt-1 font-semibold underline text-darkgray text-decoration-line:'>
