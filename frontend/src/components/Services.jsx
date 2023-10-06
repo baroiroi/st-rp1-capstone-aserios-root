@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { serviceList } from '../utils/data';
 
 const Services = () => {

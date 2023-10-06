@@ -1,16 +1,21 @@
 export const navbar = [
     {
-        name: 'Login',
-        href: '/'
+        name: 'About Smile',
+        href: '/About'
     },
     {
-        name: 'Services Offered',
+        name: 'Services and Specializations',
         href: '/Services'
     },
     {
         name: 'Book Now',
         href: '/UserBooking'
     },
+    {
+        name: 'Login',
+        href: '/'
+    },
+ 
     {
         name: 'Create an Account',
         href: '/Form'
