@@ -55,3 +55,14 @@ export const AboutUs = [
         description: 'Dental Smile Clinic is a state-of-the-art dental facility dedicated to providing exceptional oral healthcare and creating beautiful, confident smiles. Our clinic is committed to delivering the highest standards of dental services in a warm and welcoming environment. We prioritize patient comfort, advanced technology, and personalized care to ensure a positive experience for every individual who walks through our doors.'
     }
 ]
+
+export const VisionMission = [
+    {
+        name: 'Vision:',
+        description: 'To be a leading dental clinic, recognized for excellence in patient care, cutting-edge treatments, and a commitment to oral health education.'
+    },
+    {
+        name: 'Mission:',
+        description: 'Dental Smile Clinic strives to enhance the oral health and overall well-being of our patients by offering comprehensive dental services, employing modern technology, and fostering a compassionate and caring environment.'
+    }
+]
