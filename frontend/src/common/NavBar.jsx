@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { LiaToothSolid } from 'react-icons/lia'
+import { useState } from 'react'
+import { RxHamburgerMenu } from 'react-icons/rx'
 import { navbar } from '../utils/data'
 import Logo from '../assets/DentalSmileLogo.jpg';
 
@@ -17,7 +17,7 @@ const NavBar = () => {
             <img src={Logo} alt="Dental Smile Logo" className='w-16 h-16'/>
                 <span className='font-mono'>
                     Dental Smile</span>
-                <LiaToothSolid size={30} onClick={handleClick} />
+                <RxHamburgerMenu size={30} onClick={handleClick} />
             </div>
             {showMenu && <div className="absolute w-full px-3 text-right text-aqua bg-lightgray">
                 <ul className="">

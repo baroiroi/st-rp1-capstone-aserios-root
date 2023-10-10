@@ -1,7 +1,6 @@
 import { serviceList } from '../utils/data';
 
 const Services = () => {
-    console.log('serviceList', serviceList);
   return (
     <>
     <div className='flex flex-col h-auto py-5 bg-aqua'>
