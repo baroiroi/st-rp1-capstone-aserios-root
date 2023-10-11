@@ -9,4 +9,5 @@ const pool = new Pool({
     database: process.env.PG_DATABASE,
 })
 
+// console.log(pool)
 module.exports = pool

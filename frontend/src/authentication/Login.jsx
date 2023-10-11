@@ -1,5 +1,5 @@
+import { useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
-import { useState, useEffect } from 'react'
 import axios from "axios"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,18 +11,20 @@ const Login = () => {
     const navigate = useNavigate()
 
     const handleonChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value } = e.target
+        console.log(name, value)
         setLoginInputs((prev) => {
             return { ...prev, [name]: value }
         })
+        console.log(loginInputs)
     }
 
     const handleSubmit = async (e) => {
+        alert("Here")
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:8000/login', loginInputs)
-            if (response.data.length > 0) {
-                console.log(response.data)
+            const response = await axios.post('http://localhost:8000/api/v1/login', loginInputs)
+            if (response.status == 200) {
                 localStorage.setItem('login', JSON.stringify(response.data))
                 toast.success('Login Successfully')
                 setTimeout(navigate('/UserBooking'), 2000)
@@ -33,7 +35,6 @@ const Login = () => {
         }
 
     }
-
 
     return (
         <>
@@ -58,7 +59,7 @@ const Login = () => {
                             className="rounded-lg h-10 w-[17rem] p-3 mb-4 bg-lightgray text-darkgray" placeholder="Password" />
                     </div>
                     <div className="flex gap-3 font-semibold underline text-darkgray text-decoration-line:">
-                        <button className="w-24 p-2 rounded-md bg-lightgray">Login</button>
+                        <button type="submit" className="w-24 p-2 rounded-md bg-lightgray">Login</button>
                         <button className="w-24 p-2 rounded-md bg-lightgray">Cancel</button>
                     </div>
                     <div className="mt-5">
