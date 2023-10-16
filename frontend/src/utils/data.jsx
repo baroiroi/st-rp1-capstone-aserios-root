@@ -12,14 +12,57 @@ export const navbar = [
         href: '/Form'
     },
     {
-        name: 'Book Now',
-        href: '/UserBooking'
-    },
-    {
         name: 'Login',
         href: '/'
     },
+]
+
+export const loggedNav = [
+    {
+        name: 'About Dental Smile',
+        href: '/About'
+    },
+    {
+        name: 'Services and Specializations',
+        href: '/Services'
+    },
+    {
+        name: 'Book Now',
+        href: '/user/booking'
+    },
+    // {
+    //     name: 'Logout',
+    //     href: '/logout'
+    // },
  
+]
+
+export const services = [
+    {
+        id: 1,
+        service: 'Tooth Extract',
+        price: 400
+    },
+    {
+        id: 2,
+        service: 'Pasta',
+        price: 300
+    },
+    {
+        id: 3,
+        service: 'Root Canal',
+        price: 4000
+    },
+    {
+        id: 4,
+        service: 'Cleaning',
+        price: 500
+    },
+    {
+        id: 5,
+        service: 'Braces',
+        price: 600
+    },
 ]
 
 export const serviceList = [

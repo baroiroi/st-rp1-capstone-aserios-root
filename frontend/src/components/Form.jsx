@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { RxCross2 } from 'react-icons/rx'
 
 const defaultValues = {
 
@@ -28,6 +29,7 @@ export const Form = ({ handleClickbutton }) => {
     const birthdate_value = useRef(null);
     const gender_value = useRef(null);
     const password_value = useRef(null);
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
@@ -131,16 +133,21 @@ export const Form = ({ handleClickbutton }) => {
     return (
         <>
             <ToastContainer />
-            <div className="flex items-center justify-center bg-aqua text-lightgray">
-                <div className="mr-2 rounded-lg bg-darkgray">
+            <div className="flex justify-center items-top bg-aqua text-lightgray">
+                <div className="my-32 mr-2 rounded-lg bg-darkgray">
                     <div className="px-8 py-6 w-80">
-                        <h3 className="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-                            Create a new account
-                        </h3>
+                        <div className="flex items-center justify-between w-full mb-6">
+                            <h3 className="text-gray-900 text-[1.3rem] mb-[0.2rem] dark:text-white">
+                                Create a New Account
+                            </h3>
+                            <button type="button" onClick={() => navigate('/')}>
+                                        <RxCross2 size={15} />
+                            </button>
+                        </div>
                         <form className="space-y-6" onSubmit={handleFormSubmit}>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
-                                    Your email
+                                    Email
                                 </label>
                                 <input
                                     ref={email_value}
@@ -156,7 +163,22 @@ export const Form = ({ handleClickbutton }) => {
                             </div>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
-                                    Your First Name
+                                    Password
+                                </label>
+                                <input
+                                    ref={password_value}
+                                    onChange={handleOnChange}
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    placeholder="atleast 8 characters"
+                                    className="text-sm rounded-lg block w-full p-2.5 bg-lightgray border border-darkgray placeholder-darkgray text-darkgray font-style: italic"
+                                />
+                                <span className='absolute text-aqua text-[0.75rem]'>{formErrors.password}</span>
+                            </div>
+                            <div>
+                                <label className="block mb-1 text-sm font-medium text-lightgray">
+                                    First Name
                                 </label>
                                 <input
                                     ref={first_name_value}
@@ -172,7 +194,7 @@ export const Form = ({ handleClickbutton }) => {
                             </div>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
-                                    Your Last Name
+                                    Last Name
                                 </label>
                                 <input
                                     ref={last_name_value}
@@ -188,7 +210,7 @@ export const Form = ({ handleClickbutton }) => {
                             </div>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
-                                    Your address
+                                    Address
                                 </label>
                                 <input
                                     ref={address_value}
@@ -203,7 +225,7 @@ export const Form = ({ handleClickbutton }) => {
                             </div>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
-                                    Your contact_num number
+                                    Contact Number
                                 </label>
                                 <input
                                     ref={contact_num_value}
@@ -218,7 +240,7 @@ export const Form = ({ handleClickbutton }) => {
                             </div>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
-                                    Your birthdate
+                                    Birthdate
                                 </label>
                                 <input
                                     ref={birthdate_value}
@@ -232,7 +254,7 @@ export const Form = ({ handleClickbutton }) => {
                             </div>
                             <div>
                                 <label className="block mb-1 text-sm font-medium text-lightgray">
-                                    Your gender
+                                    Gender
                                 </label>
                                 <select
                                     ref={gender_value}
@@ -240,36 +262,20 @@ export const Form = ({ handleClickbutton }) => {
                                     type="text"
                                     name="gender"
                                     id="gender"
+                                    defaultValue={null}
                                     className="text-sm rounded-lg block w-full p-2.5 bg-lightgray border border-darkgray text-darkgray">
-                                    <option value="" disabled hidden selected>Choose here</option>
+                                    <option value="" disabled hidden>Choose here</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
                                 <span className='absolute text-aqua text-[0.75rem]'>{formErrors.gender}</span>
                             </div>
-                            <div>
-                                <label className="block mb-1 text-sm font-medium text-lightgray">
-                                    Your password
-                                </label>
-                                <input
-                                    ref={password_value}
-                                    onChange={handleOnChange}
-                                    type="password"
-                                    name="password"
-                                    id="password"
-                                    placeholder="atleast 8 characters"
-                                    className="text-sm rounded-lg block w-full p-2.5 bg-lightgray border border-darkgray placeholder-darkgray text-darkgray font-style: italic"
-                                />
-                                <span className='absolute text-aqua text-[0.75rem]'>{formErrors.password}</span>
-                            </div>
-                            <div className='flex justify-between text-darkgray'>
+                            
+                            <div className='flex justify-center text-darkgray'>
                                 <button
                                     type='submit'
                                     onClick={handleClickbutton}
-                                    className='p-2 font-semibold underline rounded-lg bg-lightgray text-decoration-line:'>Create Account</button>
-                                <Link to="/">
-                                    <button className='p-2 font-semibold underline rounded-lg bg-lightgray text-decoration-line:'>Cancel</button>
-                                </Link>
+                                    className='w-full p-2 my-4 font-semibold rounded-lg bg-[#223e58] text-[#FFFFFF] shadow-lg'>Create Account</button>
                             </div>
                         </form>
                     </div>

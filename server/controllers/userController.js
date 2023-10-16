@@ -99,14 +99,19 @@ const loginUser = async (req, res) => {
             [email]
         )
         if (userDetails.rowCount !== 0) {
-            await bcrypt.compare(password, userDetails.rows[0].password)
+            const matched = await bcrypt.compare(password, userDetails.rows[0].password)
             const generatedToken = generateAccessToken({
                 email: email,
             })
             userDetails.rows[0].token = generatedToken
-            res.json(userDetails.rows[0])
+
+            if (matched) {
+                res.json(userDetails.rows[0])
+            } else {
+                throw new Error("Password mismatched!")
+            } 
         } else {
-            res.json(`Email does not exist`)
+            res.json(`User does not exist`)
         }
     } catch (err) {
         console.error(err.message)
